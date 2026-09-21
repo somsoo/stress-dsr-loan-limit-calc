@@ -474,10 +474,10 @@
     }
 
     function runCalculation() {
-      const income = cleanNum(document.getElementById('annual-income').value);
-      const existingRepay = cleanNum(document.getElementById('existing-annual-repay').value);
-      const baseRate = parseFloat(document.getElementById('base-rate').value) || 4.0;
-      const years = parseInt(document.getElementById('loan-period').value, 10) || 30;
+      const income = cleanNum(document.getElementById('annual-income')?.value);
+      const existingRepay = cleanNum(document.getElementById('existing-annual-repay')?.value);
+      const baseRate = parseFloat(document.getElementById('base-rate')?.value) || 4.0;
+      const years = parseInt(document.getElementById('loan-period')?.value, 10) || 30;
 
       const maxTotalRepay = income * 0.40; // DSR 40%
       const availRepay = Math.max(0, maxTotalRepay - existingRepay);
@@ -528,10 +528,10 @@
     document.getElementById('calc-btn').addEventListener('click', runCalculation);
 
     document.getElementById('reset-btn').addEventListener('click', function() {
-      document.getElementById('annual-income').value = '80,000,000';
-      document.getElementById('existing-annual-repay').value = '6,000,000';
-      document.getElementById('base-rate').value = '4.0';
-      document.getElementById('loan-period').value = '30';
+      { const _el = document.getElementById('annual-income'); if (_el) _el.value = '80,000,000'; }
+      { const _el = document.getElementById('existing-annual-repay'); if (_el) _el.value = '6,000,000'; }
+      { const _el = document.getElementById('base-rate'); if (_el) _el.value = '4.0'; }
+      { const _el = document.getElementById('loan-period'); if (_el) _el.value = '30'; }
       document.getElementById('check-newborn').checked = true;
       runCalculation();
     });
