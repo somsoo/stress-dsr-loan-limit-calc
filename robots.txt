@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://stress-dsr-loan-limit-calc.enjoy-onepage.com/sitemap.xml
