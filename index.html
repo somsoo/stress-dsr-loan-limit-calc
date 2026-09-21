@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026 스트레스 DSR 3단계 대출 한도 & 신생아·청년 특례 비교 시뮬레이터</title>
+  <meta name="description" content="2026년 스트레스 DSR 3단계(기본 1.50% 가산) 적용에 따른 변동·혼합·주기형 주택담보대출 한도와 DSR 미적용 신생아 특례 디딤돌 및 청년주택드림대출 차익 비교">
+  <meta name="keywords" content="스트레스 DSR 3단계 계산기, 2026 주택담보대출 한도, 신생아 특례대출 DSR 미적용, 청년주택드림대출 금리 비교, 변동금리 주기형 스트레스 금리">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
+  <style>
+    html, body { max-width: 100%; overflow-x: hidden; }
+    .manual-ad-box { width: 100%; max-width: 960px; overflow: hidden; }
+    .manual-ad-box ins { max-width: 100% !important; overflow: hidden !important; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans">
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <span class="text-2xl">🏦</span>
+        <div>
+          <h1 class="text-lg font-bold text-slate-900 leading-tight">2026 스트레스 DSR 3단계 대출 한도 & 정책대출 비교 시뮬레이터</h1>
+          <p class="text-xs text-slate-500">기본 스트레스 1.50% 반영 · 시중은행 상품별 한도 역산 · 신생아 특례 DSR 면제 비교</p>
+        </div>
+      </div>
+      <a href="guides/guide.html" class="text-xs font-semibold bg-blue-50 text-blue-700 px-3 py-1.5 rounded-lg hover:bg-blue-100 transition border border-blue-200">
+        📘 DSR 가이드북
+      </a>
+    </div>
+  </header>
+
+  <div class="manual-ad-box mx-auto my-2 px-4">
+    <ins class="adsbygoogle"
+         style="display:block; height: 60px; max-height: 60px;"
+         data-ad-client="ca-pub-2228289204702106"
+         data-ad-slot="3824727725"
+         data-ad-format="horizontal"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <main class="max-w-7xl mx-auto px-4 py-6 flex-grow">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Left Column: Input Form (6 cols) -->
+      <section class="lg:col-span-6 bg-white rounded-2xl p-6 shadow-sm border border-slate-200 space-y-5">
+        <div class="border-b border-slate-100 pb-3">
+          <h2 class="text-base font-bold text-slate-800 flex items-center gap-2">
+            <span>📊</span> 소득 및 대출 조건 입력
+          </h2>
+          <p class="text-xs text-slate-500 mt-1">2026년 금융위원회 스트레스 DSR 3단계 지침 기준이 적용됩니다.</p>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold text-slate-700 mb-1" for="annual-income">부부 합산 연소득 (원)</label>
+          <input type="text" id="annual-income" value="80,000,000" class="w-full px-3 py-2.5 border border-slate-300 rounded-xl text-base font-medium focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold text-slate-700 mb-1" for="existing-annual-repay">기존 대출 연간 원리금 상환액 (신용대출·할부 등, 원)</label>
+          <input type="text" id="existing-annual-repay" value="6,000,000" class="w-full px-3 py-2.5 border border-slate-300 rounded-xl text-base font-medium focus:ring-2 focus:ring-blue-500 focus:outline-none">
+          <p class="text-xs text-slate-400 mt-1">DSR 40% 한도에서 기존 대출 상환액을 차감한 잔여액으로 신규 주담대를 심사합니다.</p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs text-slate-600 mb-1" for="base-rate">시중 기본 대출금리 (%)</label>
+            <input type="number" id="base-rate" value="4.0" step="0.1" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-base focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-xs text-slate-600 mb-1" for="loan-period">상환 기간</label>
+            <select id="loan-period" class="w-full px-2.5 py-2 border border-slate-300 rounded-lg text-base focus:outline-none">
+              <option value="30" selected>30년 (360개월)</option>
+              <option value="40">40년 (480개월)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Policy Special Eligibility -->
+        <div class="p-4 bg-blue-50/60 rounded-xl border border-blue-200 space-y-2">
+          <span class="font-bold text-xs text-blue-900">🎁 정부 정책대출 특례 자격 체크</span>
+          <div class="space-y-1.5 text-xs text-slate-700">
+            <label class="flex items-center gap-2">
+              <input type="checkbox" id="check-newborn" checked class="rounded text-blue-600 focus:ring-blue-500">
+              신생아 특례 디딤돌 대상 (2년 내 출산/입양, 소득 2억 이하)
+            </label>
+            <label class="flex items-center gap-2">
+              <input type="checkbox" id="check-youth" class="rounded text-blue-600 focus:ring-blue-500">
+              청년주택드림대출 대상 (연소득 7천만 이하, 청약 통장 연계)
+            </label>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 pt-2">
+          <button id="calc-btn" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl shadow transition duration-150 flex items-center justify-center gap-2 text-base">
+            <span>🔍</span> 3단계 DSR 대출 한도 분석하기
+          </button>
+          <button id="reset-btn" class="px-4 py-3.5 border border-slate-300 hover:bg-slate-100 text-slate-600 font-semibold rounded-xl transition text-base">
+            초기화
+          </button>
+        </div>
+      </section>
+
+      <!-- Right Column: Result Receipt (6 cols, Sticky) -->
+      <section class="lg:col-span-6 lg:sticky lg:top-20 space-y-4">
+        <div id="result-box" class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+          <div class="border-b border-dashed border-slate-300 pb-4 mb-4 text-center">
+            <span class="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-xs font-bold rounded-full mb-1">
+              ✓ 2026 스트레스 DSR 3단계 정산표
+            </span>
+            <h3 class="text-lg font-black text-slate-900">시중 주담대 vs 정책대출 한도 비교</h3>
+            <p class="text-3xl font-black text-blue-600 mt-2" id="newborn-limit-display">500,000,000원</p>
+            <p class="text-xs text-slate-500 mt-1" id="newborn-subtext">신생아 특례 디딤돌 적용 시 (DSR 규제 미적용, 고정 2.5%)</p>
+          </div>
+
+          <div class="space-y-3 text-sm">
+            <div class="flex justify-between items-center py-1.5 border-b border-slate-100">
+              <span class="text-slate-500">가용 잔여 DSR (연 한도)</span>
+              <span class="font-bold text-slate-800" id="dsr-avail-text">32.5% (연 26,000,000원)</span>
+            </div>
+            
+            <div class="p-3 bg-slate-50 rounded-xl space-y-2 text-xs">
+              <div class="flex justify-between items-center">
+                <span class="text-slate-600">① 변동금리형 (+1.50%p 가산, 5.50%)</span>
+                <span class="font-bold text-slate-900" id="limit-var-text">381,600,000원</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-slate-600">② 혼합형 (5년 고정, +1.20%p, 5.20%)</span>
+                <span class="font-bold text-slate-900" id="limit-mix-text">396,800,000원</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-slate-600">③ 주기형 (5년 변동, +0.60%p, 4.60%)</span>
+                <span class="font-bold text-blue-700" id="limit-cycle-text">430,200,000원</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-slate-600">④ 순수 고정금리형 (+0.00%p, 4.00%)</span>
+                <span class="font-bold text-slate-900" id="limit-fixed-text">467,500,000원</span>
+              </div>
+            </div>
+
+            <div class="flex justify-between items-center py-1.5 border-b border-slate-100 text-emerald-600 font-bold">
+              <span>정책대출 선택 시 추가 확보 한도</span>
+              <span id="diff-limit-text">+118,400,000원 한도 증액</span>
+            </div>
+            <div class="flex justify-between items-center py-2 bg-emerald-50 px-3 rounded-lg font-bold text-emerald-900 text-xs md:text-sm">
+              <span>30년 누적 이자 절감 효과</span>
+              <span id="interest-save-text">총 162,300,000원 절감</span>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-slate-100">
+            <button id="copy-btn" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-semibold py-3 px-4 rounded-xl transition flex items-center justify-center gap-2 text-sm shadow">
+              <span>📋</span> 결과 전체 복사하기
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="mt-12 bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200">
+      <h2 class="text-xl font-bold text-slate-900 mb-4">2026 스트레스 DSR 3단계 및 정책대출 자주 묻는 질문</h2>
+      <div class="space-y-3">
+        <details class="group border border-slate-200 rounded-xl p-4 bg-slate-50 open:bg-white transition">
+          <summary class="font-semibold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+            <span>Q1. 스트레스 DSR 3단계에서 금리는 얼마나 오르나요?</span>
+            <span class="text-slate-400 group-open:rotate-180 transition">▼</span>
+          </summary>
+          <p class="text-sm text-slate-600 mt-2 leading-relaxed">
+            기본 스트레스 금리 연 1.50%가 적용되며, 순수 변동형은 100%(+1.50%p), 5년 고정 혼합형은 80%(+1.20%p), 5년 주기형은 40%(+0.60%p)의 가산금리가 심사 시 부여되어 대출 한도가 축소됩니다.
+          </p>
+        </details>
+        <details class="group border border-slate-200 rounded-xl p-4 bg-slate-50 open:bg-white transition">
+          <summary class="font-semibold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+            <span>Q2. 신생아 특례대출은 왜 DSR을 보지 않나요?</span>
+            <span class="text-slate-400 group-open:rotate-180 transition">▼</span>
+          </summary>
+          <p class="text-sm text-slate-600 mt-2 leading-relaxed">
+            국토교통부와 주택도시기금의 공적 주거 지원 정책이므로 은행권 가계부채 관리 규제인 스트레스 DSR 적용 대상에서 배제되며, DTI 60% 기준만 충족하면 최대 5억 원까지 대출이 가능합니다.
+          </p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <div class="manual-ad-box mx-auto my-6 px-4">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-2228289204702106"
+         data-ad-slot="3416334507"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <div id="toast" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-slate-900 text-white text-sm px-5 py-2.5 rounded-full shadow-lg transition-opacity duration-300 opacity-0 pointer-events-none z-50">
+    결과가 클립보드에 복사되었습니다.
+  </div>
+
+  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 space-y-1">
+      <p>© 2026 스트레스 DSR 3단계 대출 한도 계산기. All rights reserved.</p>
+      <p>본 계산기는 금융위원회 스트레스 DSR 감독규정 및 주택도시기금 운용기준을 기반으로 산출된 모의 결과입니다.</p>
+    </div>
+  </footer>
+
+  <script>
+    function cleanNum(val) {
+      if (!val) return 0;
+      return parseInt(String(val).replace(/,/g, ''), 10) || 0;
+    }
+
+    function formatNum(num) {
+      return Math.round(num).toLocaleString('ko-KR');
+    }
+
+    function formatInputComma(e) {
+      const raw = e.target.value.replace(/,/g, '');
+      if (!raw || isNaN(raw)) return;
+      e.target.value = parseInt(raw, 10).toLocaleString('ko-KR');
+    }
+
+    document.getElementById('annual-income').addEventListener('input', formatInputComma);
+    document.getElementById('existing-annual-repay').addEventListener('input', formatInputComma);
+
+    // PMT inverse: Loan Limit = (Annual Max PMT / 12) / [ r(1+r)^n / ((1+r)^n - 1) ]
+    function calcLoanLimit(annualAvailRepay, annualRatePercent, years) {
+      const monthlyRepay = annualAvailRepay / 12;
+      const r = (annualRatePercent / 100) / 12;
+      const n = years * 12;
+      if (r === 0) return monthlyRepay * n;
+      const factor = (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+      return monthlyRepay / factor;
+    }
+
+    function runCalculation() {
+      const income = cleanNum(document.getElementById('annual-income').value);
+      const existingRepay = cleanNum(document.getElementById('existing-annual-repay').value);
+      const baseRate = parseFloat(document.getElementById('base-rate').value) || 4.0;
+      const years = parseInt(document.getElementById('loan-period').value, 10) || 30;
+
+      const maxTotalRepay = income * 0.40; // DSR 40%
+      const availRepay = Math.max(0, maxTotalRepay - existingRepay);
+      const dsrAvailPct = income > 0 ? ((availRepay / income) * 100).toFixed(1) : 0;
+
+      // Rates with 2026 Stage 3 Stress Rates (Base 1.50%)
+      const rateVar = baseRate + 1.50;  // 100%
+      const rateMix = baseRate + 1.20;  // 80%
+      const rateCycle = baseRate + 0.60; // 40%
+      const rateFixed = baseRate + 0.00; // 0%
+
+      const limitVar = calcLoanLimit(availRepay, rateVar, years);
+      const limitMix = calcLoanLimit(availRepay, rateMix, years);
+      const limitCycle = calcLoanLimit(availRepay, rateCycle, years);
+      const limitFixed = calcLoanLimit(availRepay, rateFixed, years);
+
+      // Newborn Special (Max 500,000,000, rate 2.5%, DTI 60%)
+      const isNewborn = document.getElementById('check-newborn').checked;
+      const newbornLimit = isNewborn ? 500000000 : limitFixed;
+
+      const diffLimit = Math.max(0, newbornLimit - limitVar);
+
+      // 30 yr interest difference: Newborn (2.5%) vs Bank (4.0%) on 500M
+      // Monthly PMT diff * 360
+      const r1 = (0.025 / 12);
+      const r2 = (0.040 / 12);
+      const n = 360;
+      const pmtNewborn = (500000000 * r1 * Math.pow(1+r1, n)) / (Math.pow(1+r1, n) - 1);
+      const pmtBank = (500000000 * r2 * Math.pow(1+r2, n)) / (Math.pow(1+r2, n) - 1);
+      const totalSave = Math.max(0, (pmtBank - pmtNewborn) * n);
+
+      // DOM Updates
+      document.getElementById('dsr-avail-text').textContent = `${dsrAvailPct}% (연 ${formatNum(availRepay)}원)`;
+      document.getElementById('limit-var-text').textContent = `${formatNum(limitVar)}원`;
+      document.getElementById('limit-mix-text').textContent = `${formatNum(limitMix)}원`;
+      document.getElementById('limit-cycle-text').textContent = `${formatNum(limitCycle)}원`;
+      document.getElementById('limit-fixed-text').textContent = `${formatNum(limitFixed)}원`;
+      
+      document.getElementById('newborn-limit-display').textContent = `${formatNum(newbornLimit)}원`;
+      document.getElementById('diff-limit-text').textContent = `+${formatNum(diffLimit)}원 한도 증액`;
+      document.getElementById('interest-save-text').textContent = `총 ${formatNum(totalSave)}원 절감`;
+
+      try {
+        localStorage.setItem('dsr_calc_last', JSON.stringify({ income, limitVar, newbornLimit }));
+      } catch (e) {}
+    }
+
+    document.getElementById('calc-btn').addEventListener('click', runCalculation);
+
+    document.getElementById('reset-btn').addEventListener('click', function() {
+      document.getElementById('annual-income').value = '80,000,000';
+      document.getElementById('existing-annual-repay').value = '6,000,000';
+      document.getElementById('base-rate').value = '4.0';
+      document.getElementById('loan-period').value = '30';
+      document.getElementById('check-newborn').checked = true;
+      runCalculation();
+    });
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.style.opacity = '1';
+      setTimeout(() => { toast.style.opacity = '0'; }, 2200);
+    }
+
+    document.getElementById('copy-btn').addEventListener('click', function() {
+      const newborn = document.getElementById('newborn-limit-display').textContent;
+      const v = document.getElementById('limit-var-text').textContent;
+      const c = document.getElementById('limit-cycle-text').textContent;
+      const diff = document.getElementById('diff-limit-text').textContent;
+      const save = document.getElementById('interest-save-text').textContent;
+      const url = window.location.href;
+
+      const summary = `[2026 스트레스 DSR 3단계 대출 한도 분석]\n- 정책대출(신생아) 최대 한도: ${newborn}\n- 시중 변동형 한도: ${v}\n- 시중 주기형 한도: ${c}\n- 한도 격차: ${diff}\n- 30년 이자 절감: ${save}\n👉 바로가기: ${url}`;
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(summary).then(() => showToast('결과가 클립보드에 복사되었습니다.')).catch(() => fallbackCopy(summary));
+      } else {
+        fallbackCopy(summary);
+      }
+    });
+
+    function fallbackCopy(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        showToast('결과가 클립보드에 복사되었습니다.');
+      } catch (err) {
+        alert('복사 실패');
+      }
+      document.body.removeChild(ta);
+    }
+
+    window.addEventListener('DOMContentLoaded', runCalculation);
+  </script>
+</body>
+</html>
