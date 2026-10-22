@@ -136,6 +136,97 @@
     outline-offset: 2px !important;
   }
 </style>
+<style id="dsr-modern-enhancements">
+  /* 2026 Stress DSR Modern Enhancements */
+  .quick-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+  }
+  .quick-chip {
+    background: #f1f5f9;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+    border-radius: 20px;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+  }
+  .quick-chip:hover {
+    background: #e2e8f0;
+    border-color: #94a3b8;
+  }
+  .quick-chip:active {
+    background: #2563eb;
+    color: #ffffff;
+    border-color: #1d4ed8;
+  }
+  .quick-chip.indigo {
+    background: #eef2ff;
+    color: #3730a3;
+    border-color: #c7d2fe;
+  }
+  .quick-chip.indigo:hover {
+    background: #e0e7ff;
+  }
+  .quick-chip.emerald {
+    background: #ecfdf5;
+    color: #065f46;
+    border-color: #a7f3d0;
+  }
+  .quick-chip.emerald:hover {
+    background: #d1fae5;
+  }
+  .receipt-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #f1f5f9;
+  }
+  .receipt-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    text-align: center;
+  }
+  .receipt-btn-primary {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: #ffffff;
+    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.25);
+  }
+  .receipt-btn-primary:hover {
+    filter: brightness(1.08);
+  }
+  .receipt-btn-secondary {
+    background: #ffffff;
+    color: #334155;
+    border-color: #cbd5e1;
+  }
+  .receipt-btn-secondary:hover {
+    background: #f8fafc;
+  }
+  @media (max-width: 420px) {
+    .receipt-actions {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans">
 <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
@@ -224,16 +315,34 @@
 <div>
 <label class="block text-sm font-semibold text-slate-700 mb-1" for="annual-income">부부 합산 연소득 (원)</label>
 <input class="w-full px-3 py-2.5 border border-slate-300 rounded-xl text-base font-medium focus:ring-2 focus:ring-blue-500 focus:outline-none" id="annual-income" type="text" value="80,000,000"/>
+<div class="quick-chips mt-1.5" aria-label="연소득 빠른 선택">
+  <button type="button" class="quick-chip indigo" onclick="setIncomePreset(50000000)">5,000만</button>
+  <button type="button" class="quick-chip indigo" onclick="setIncomePreset(70000000)">7,000만</button>
+  <button type="button" class="quick-chip indigo" onclick="setIncomePreset(80000000)">8,000만</button>
+  <button type="button" class="quick-chip indigo" onclick="setIncomePreset(100000000)">1억</button>
+  <button type="button" class="quick-chip indigo" onclick="setIncomePreset(120000000)">1.2억</button>
+</div>
 </div>
 <div>
 <label class="block text-sm font-semibold text-slate-700 mb-1" for="existing-annual-repay">기존 대출 연간 원리금 상환액 (신용대출·할부 등, 원)</label>
 <input class="w-full px-3 py-2.5 border border-slate-300 rounded-xl text-base font-medium focus:ring-2 focus:ring-blue-500 focus:outline-none" id="existing-annual-repay" type="text" value="6,000,000"/>
+<div class="quick-chips mt-1.5" aria-label="기존 부채 상환액 빠른 선택">
+  <button type="button" class="quick-chip" onclick="setRepayPreset(0)">0원 (대출없음)</button>
+  <button type="button" class="quick-chip" onclick="setRepayPreset(3000000)">연 300만</button>
+  <button type="button" class="quick-chip" onclick="setRepayPreset(6000000)">연 600만</button>
+  <button type="button" class="quick-chip" onclick="setRepayPreset(12000000)">연 1,200만</button>
+</div>
 <p class="text-xs text-slate-400 mt-1">DSR 40% 한도에서 기존 대출 상환액을 차감한 잔여액으로 신규 주담대를 심사합니다.</p>
 </div>
 <div class="grid grid-cols-2 gap-4">
 <div>
 <label class="block text-xs text-slate-600 mb-1" for="base-rate">시중 기본 대출금리 (%)</label>
 <input class="w-full px-3 py-2 border border-slate-300 rounded-lg text-base focus:outline-none" id="base-rate" step="0.1" type="number" min="0" value="4.0"/ inputmode="numeric">
+<div class="quick-chips mt-1.5" aria-label="기본 대출금리 빠른 선택">
+  <button type="button" class="quick-chip emerald" onclick="setRatePreset(3.5)">3.5% (최저)</button>
+  <button type="button" class="quick-chip emerald" onclick="setRatePreset(4.0)">4.0% (평균)</button>
+  <button type="button" class="quick-chip emerald" onclick="setRatePreset(4.5)">4.5%</button>
+</div>
 </div>
 <div>
 <label class="block text-xs text-slate-600 mb-1" for="loan-period">상환 기간</label>
@@ -309,10 +418,24 @@
 <span id="interest-save-text">총 162,300,000원 절감</span>
 </div>
 </div>
-<div class="mt-6 pt-4 border-t border-slate-100">
-<button class="w-full bg-slate-900 hover:bg-slate-800 text-white font-semibold py-3 px-4 rounded-xl transition flex items-center justify-center gap-2 text-sm shadow" id="copy-btn">
-<span>📋</span> 결과 전체 복사하기
-            </button>
+<!-- 2026 DSR 액션 툴바 (진단서 PNG 저장, 복사, 공유, 리셋) -->
+<div class="receipt-actions">
+  <button type="button" class="receipt-btn receipt-btn-primary" onclick="downloadDSRReceiptPNG()">
+    <span>📷</span>
+    <span>한도 진단서 PNG</span>
+  </button>
+  <button type="button" class="receipt-btn receipt-btn-secondary" id="copy-btn">
+    <span>📋</span>
+    <span>결과 전체 복사</span>
+  </button>
+  <button type="button" class="receipt-btn receipt-btn-secondary" onclick="shareDSRResult()">
+    <span>💬</span>
+    <span>공유하기</span>
+  </button>
+  <button type="button" class="receipt-btn receipt-btn-secondary" onclick="document.getElementById('reset-btn').click()">
+    <span>🔄</span>
+    <span>기본값 리셋</span>
+  </button>
 </div>
 </div>
 </section>
@@ -587,6 +710,198 @@
       }
       document.body.removeChild(ta);
     }
+
+    
+    // 2026 Stress DSR Modern Helper Functions
+    window.setIncomePreset = function(val) {
+      const el = document.getElementById('annual-income');
+      if (el) {
+        el.value = Number(val).toLocaleString('ko-KR');
+        runCalculation();
+      }
+    };
+
+    window.setRepayPreset = function(val) {
+      const el = document.getElementById('existing-annual-repay');
+      if (el) {
+        el.value = Number(val).toLocaleString('ko-KR');
+        runCalculation();
+      }
+    };
+
+    window.setRatePreset = function(val) {
+      const el = document.getElementById('base-rate');
+      if (el) {
+        el.value = parseFloat(val).toFixed(1);
+        runCalculation();
+      }
+    };
+
+    window.shareDSRResult = function() {
+      const newborn = document.getElementById('newborn-limit-display')?.textContent || '';
+      const v = document.getElementById('limit-var-text')?.textContent || '';
+      const c = document.getElementById('limit-cycle-text')?.textContent || '';
+      const shareData = {
+        title: '2026 스트레스 DSR 3단계 대출 한도 분석',
+        text: `[스트레스 DSR 한도 분석]\n- 정책(신생아) 한도: ${newborn}\n- 시중 주기형 한도: ${c}\n- 시중 변동형 한도: ${v}\n자세한 한도 진단 결과를 확인해보세요!`,
+        url: window.location.href
+      };
+      if (navigator.share) {
+        navigator.share(shareData).catch(() => document.getElementById('copy-btn')?.click());
+      } else {
+        document.getElementById('copy-btn')?.click();
+      }
+    };
+
+    window.downloadDSRReceiptPNG = function() {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = 640;
+      canvas.height = 920;
+
+      // Background
+      ctx.fillStyle = '#f8fafc';
+      ctx.fillRect(0, 0, 640, 920);
+
+      // Card Container
+      ctx.fillStyle = '#ffffff';
+      ctx.roundRect ? ctx.roundRect(40, 40, 560, 840, 20) : ctx.rect(40, 40, 560, 840);
+      ctx.fill();
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = '#cbd5e1';
+      ctx.stroke();
+
+      // Top Header Accent Bar
+      const grad = ctx.createLinearGradient(40, 40, 600, 40);
+      grad.addColorStop(0, '#1e3a8a');
+      grad.addColorStop(0.5, '#2563eb');
+      grad.addColorStop(1, '#4f46e5');
+      ctx.fillStyle = grad;
+      ctx.fillRect(40, 40, 560, 12);
+
+      // Header Texts
+      ctx.fillStyle = '#1e40af';
+      ctx.font = 'bold 13px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('2026 FINANCIAL COMMISSION DSR STAGE 3 AUDIT', 320, 90);
+
+      ctx.fillStyle = '#0f172a';
+      ctx.font = '900 24px sans-serif';
+      ctx.fillText('스트레스 DSR 3단계 대출한도 진단서', 320, 126);
+
+      const now = new Date();
+      const dateStr = now.getFullYear() + '.' + String(now.getMonth() + 1).padStart(2, '0') + '.' + String(now.getDate()).padStart(2, '0') + ' ' + String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
+      ctx.fillStyle = '#64748b';
+      ctx.font = '12px monospace';
+      ctx.fillText('산출기준일시: ' + dateStr, 320, 155);
+
+      // Dashed Line
+      ctx.beginPath();
+      ctx.setLineDash([6, 4]);
+      ctx.strokeStyle = '#cbd5e1';
+      ctx.lineWidth = 1.5;
+      ctx.moveTo(70, 178);
+      ctx.lineTo(570, 178);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      function drawRow(label, value, y, isBold, color) {
+        ctx.textAlign = 'left';
+        ctx.fillStyle = '#475569';
+        ctx.font = (isBold ? 'bold ' : '') + '15px sans-serif';
+        ctx.fillText(label, 75, y);
+
+        ctx.textAlign = 'right';
+        ctx.fillStyle = color || (isBold ? '#0f172a' : '#1e293b');
+        ctx.font = (isBold ? 'bold ' : '') + '15px monospace';
+        ctx.fillText(value, 565, y);
+      }
+
+      const income = document.getElementById('annual-income')?.value || '0';
+      const existing = document.getElementById('existing-annual-repay')?.value || '0';
+      const baseRate = document.getElementById('base-rate')?.value || '4.0';
+      const period = document.getElementById('loan-period')?.value || '30';
+
+      drawRow('부부 합산 연소득', income + ' 원', 215, false);
+      drawRow('기존 대출 연간 원리금', existing + ' 원', 250, false);
+      drawRow('시중 기준금리 / 상환기간', baseRate + '% / ' + period + '년', 285, false);
+      drawRow('가용 잔여 DSR (연간)', document.getElementById('dsr-avail-text')?.textContent || '-', 320, true, '#1e40af');
+
+      // Dashed Line
+      ctx.beginPath();
+      ctx.setLineDash([6, 4]);
+      ctx.strokeStyle = '#cbd5e1';
+      ctx.moveTo(70, 350);
+      ctx.lineTo(570, 350);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Product Type Limits
+      ctx.textAlign = 'left';
+      ctx.fillStyle = '#0f172a';
+      ctx.font = 'bold 15px sans-serif';
+      ctx.fillText('🏛️ 시중은행 금리 유형별 산출 한도', 75, 385);
+
+      drawRow('① 변동금리형 (+1.50%p 가산)', document.getElementById('limit-var-text')?.textContent || '-', 420, false, '#334155');
+      drawRow('② 5년 혼합형 (+1.20%p 가산)', document.getElementById('limit-mix-text')?.textContent || '-', 455, false, '#334155');
+      drawRow('③ 5년 주기형 (+0.60%p 가산)', document.getElementById('limit-cycle-text')?.textContent || '-', 490, true, '#1d4ed8');
+      drawRow('④ 순수 고정금리형 (+0.00%p)', document.getElementById('limit-fixed-text')?.textContent || '-', 525, false, '#334155');
+
+      // Highlight Box (Policy Loan Comparison)
+      ctx.fillStyle = '#eff6ff';
+      ctx.roundRect ? ctx.roundRect(70, 555, 500, 160, 16) : ctx.rect(70, 555, 500, 160);
+      ctx.fill();
+      ctx.strokeStyle = '#93c5fd';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      ctx.textAlign = 'left';
+      ctx.fillStyle = '#1e3a8a';
+      ctx.font = 'bold 13px sans-serif';
+      ctx.fillText('정부 정책대출 특례 적용 시 (DSR 미적용)', 95, 590);
+
+      ctx.fillStyle = '#2563eb';
+      ctx.font = '900 24px monospace';
+      ctx.fillText(document.getElementById('newborn-limit-display')?.textContent || '-', 95, 625);
+
+      ctx.textAlign = 'right';
+      ctx.fillStyle = '#059669';
+      ctx.font = 'bold 13px sans-serif';
+      ctx.fillText(document.getElementById('diff-limit-text')?.textContent || '-', 545, 590);
+
+      ctx.fillStyle = '#065f46';
+      ctx.font = 'bold 16px monospace';
+      ctx.fillText(document.getElementById('interest-save-text')?.textContent || '-', 545, 625);
+
+      // Sub note in box
+      ctx.textAlign = 'left';
+      ctx.fillStyle = '#64748b';
+      ctx.font = '11px sans-serif';
+      ctx.fillText('※ 신생아 특례·디딤돌은 DSR 대신 DTI 60% 적용으로 한도 축소가 면제됩니다.', 95, 675);
+      ctx.fillText('※ 주기형 금리 선택 시 변동금리 대비 대출 한도가 대폭 증액됩니다.', 95, 695);
+
+      // Footer
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = '11px sans-serif';
+      ctx.fillText('본 시뮬레이션 결과는 금융위 2026 지침 기반 추정치이며 실제 한도는 은행 심사에 따릅니다.', 320, 750);
+      ctx.fillText('https://stress-dsr-loan-limit-calc.enjoy-onepage.com', 320, 770);
+
+      // Simulated Barcode
+      const barY = 790;
+      ctx.fillStyle = '#334155';
+      for (let i = 0; i < 40; i++) {
+        const w = (i % 3 === 0) ? 3 : (i % 2 === 0 ? 2 : 1);
+        ctx.fillRect(180 + i * 7, barY, w, 28);
+      }
+
+      // Download Trigger
+      const link = document.createElement('a');
+      link.download = '2026_스트레스DSR_대출한도_진단서.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+      showToast('대출한도 진단서 PNG가 다운로드되었습니다! 📷');
+    };
 
     window.addEventListener('DOMContentLoaded', runCalculation);
   </script>
