@@ -135,6 +135,18 @@
     outline: 2px solid #2563eb !important;
     outline-offset: 2px !important;
   }
+  .extra-section { margin-top: 1.5rem; }
+  .extra-table { table-layout: fixed; width: 100%; border-collapse: collapse; font-size: 0.72rem; }
+  .extra-table th, .extra-table td { padding: 5px 2px; text-align: center; border: 1px solid #e2e8f0; }
+  .extra-table th { background: #f8fafc; color: #334155; font-weight: 700; font-size: 0.68rem; white-space: nowrap; }
+  .extra-table .td-val { word-break: keep-all; font-size: 0.68rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-weight: 600; white-space: nowrap; }
+  .checkpoints-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.25rem; margin-top: 1rem; }
+  .sublinks-section { margin-top: 2rem; }
+  .sublinks-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+  @media (min-width: 640px) { .sublinks-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .sublinks-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
+  .sublink-item { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; color: #334155; text-decoration: none; font-size: 0.8125rem; transition: background-color 0.15s ease; }
+  .sublink-item:hover { background: #f1f5f9; color: #2563eb; }
 </style>
 <style id="dsr-modern-enhancements">
   /* 2026 Stress DSR Modern Enhancements */
@@ -255,6 +267,7 @@
   <!-- Top Slim Ad Banner (50~60px) -->
 
     <!-- Section 16-1: Featured Snippet 3-Second Instant Answer Box -->
+  <!-- PAGE:HERO START -->
   <section class="max-w-4xl mx-auto px-4 pt-3 pb-2">
     <div class="featured-snippet-box bg-gradient-to-br from-indigo-900 to-slate-900 text-white rounded-2xl p-5 sm:p-6 shadow-md border border-indigo-700/40 space-y-2.5">
       <div class="flex items-center gap-2">
@@ -273,6 +286,7 @@
       </ul>
     </div>
   </section>
+  <!-- PAGE:HERO END -->
 
   <!-- Section 16-2: Visual 3-Step HowTo & KBD Keyboard Standard -->
   <section class="max-w-4xl mx-auto px-4 py-2.5">
@@ -450,6 +464,67 @@
 </div>
 </section>
 </div>
+<!-- PAGE:EXTRA START --><!-- PAGE:EXTRA END -->
+<!-- PAGE:SUBLINKS START -->
+<section class="sublinks-section mt-8">
+  <div class="sublinks-grid">
+    <div class="sublinks-card">
+      <h3 class="text-base font-bold text-slate-900 mb-3 flex items-center gap-2">
+        <span>📊</span> 연봉(연소득) 구간별 스트레스 DSR 3단계 주담대 한도표
+      </h3>
+      <div class="space-y-1">
+        <a href="/income-4000.html" class="sublink-item">
+          <span>연봉 4,000만 원 (변동·주기형 한도 비교)</span>
+          <span class="text-blue-600 font-bold">→</span>
+        </a>
+        <a href="/income-5000.html" class="sublink-item">
+          <span>연봉 5,000만 원 (변동·주기형 한도 비교)</span>
+          <span class="text-blue-600 font-bold">→</span>
+        </a>
+        <a href="/income-6000.html" class="sublink-item">
+          <span>연봉 6,000만 원 (주담대 한도·DSR 40%)</span>
+          <span class="text-blue-600 font-bold">→</span>
+        </a>
+        <a href="/income-7000.html" class="sublink-item">
+          <span>연봉 7,000만 원 (주담대 한도·DSR 40%)</span>
+          <span class="text-blue-600 font-bold">→</span>
+        </a>
+        <a href="/income-8000.html" class="sublink-item">
+          <span>연봉 8,000만 원 (주담대 한도·DSR 40%)</span>
+          <span class="text-blue-600 font-bold">→</span>
+        </a>
+        <a href="/income-100m.html" class="sublink-item">
+          <span>연봉 1억 원 (부부합산·최대 주담대 한도)</span>
+          <span class="text-blue-600 font-bold">→</span>
+        </a>
+      </div>
+    </div>
+    <div class="sublinks-card">
+      <h3 class="text-base font-bold text-slate-900 mb-3 flex items-center gap-2">
+        <span>📌</span> 금리유형·신생아 특례·40년 만기 &amp; 신용대출 DSR 가이드
+      </h3>
+      <div class="space-y-1">
+        <a href="/guide-rate-type.html" class="sublink-item">
+          <span>변동(1.5%p) vs 혼합(1.2%p) vs 주기형(0.6%p)</span>
+          <span class="text-blue-600 font-bold">→</span>
+        </a>
+        <a href="/guide-newborn-loan.html" class="sublink-item">
+          <span>신생아 특례 대출 5억 (DSR 배제) vs 시중은행</span>
+          <span class="text-blue-600 font-bold">→</span>
+        </a>
+        <a href="/guide-40years-term.html" class="sublink-item">
+          <span>주담대 만기 30년 vs 40년 한도 증가폭 비교</span>
+          <span class="text-blue-600 font-bold">→</span>
+        </a>
+        <a href="/guide-credit-loan-dsr.html" class="sublink-item">
+          <span>기존 신용대출·마이너스통장 DSR 한도 차감 계산</span>
+          <span class="text-blue-600 font-bold">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- PAGE:SUBLINKS END -->
 <!-- ADSENSE START: mid -->
 <div class="ad-box ad-mid" style="max-width:1080px;margin:16px auto;padding:0 14px;text-align:center;">
   <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="1186914926" data-ad-format="auto" data-full-width-responsive="true"></ins>
@@ -461,24 +536,24 @@
 <section class="mt-8 bg-white rounded-2xl p-4 sm:p-6 md:p-8 shadow-sm border border-slate-200">
 <h2 class="text-xl font-bold text-slate-900 mb-4">2026 스트레스 DSR 3단계 및 정책대출 자주 묻는 질문</h2>
 <div class="space-y-3">
-<details class="group border border-slate-200 rounded-xl p-4 bg-slate-50 open:bg-white transition">
-<summary class="font-semibold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+<div class="border border-slate-200 rounded-xl p-4 bg-slate-50">
+<div class="font-semibold text-slate-800 flex justify-between items-center">
 <span>Q1. 스트레스 DSR 3단계에서 금리는 얼마나 오르나요?</span>
 <span class="text-slate-400 group-open:rotate-180 transition">▼</span>
-</summary>
+</div>
 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
             기본 스트레스 금리 연 1.50%가 적용되며, 순수 변동형은 100%(+1.50%p), 5년 고정 혼합형은 80%(+1.20%p), 5년 주기형은 40%(+0.60%p)의 가산금리가 심사 시 부여되어 대출 한도가 축소됩니다.
           </p>
-</details>
-<details class="group border border-slate-200 rounded-xl p-4 bg-slate-50 open:bg-white transition">
-<summary class="font-semibold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+</div>
+<div class="border border-slate-200 rounded-xl p-4 bg-slate-50">
+<div class="font-semibold text-slate-800 flex justify-between items-center">
 <span>Q2. 신생아 특례대출은 왜 DSR을 보지 않나요?</span>
 <span class="text-slate-400 group-open:rotate-180 transition">▼</span>
-</summary>
+</div>
 <p class="text-sm text-slate-600 mt-2 leading-relaxed">
             국토교통부와 주택도시기금의 공적 주거 지원 정책이므로 은행권 가계부채 관리 규제인 스트레스 DSR 적용 대상에서 배제되며, DTI 60% 기준만 충족하면 최대 5억 원까지 대출이 가능합니다.
           </p>
-</details>
+</div>
 </div>
 </section>
 </main>
@@ -497,6 +572,7 @@
 <span>💡</span> 자주 묻는 질문
         </h2>
 </div>
+<!-- PAGE:FAQ START -->
 <div class="space-y-4">
 <div class="border border-slate-200 dark:border-slate-700 rounded-xl p-5 bg-white dark:bg-slate-800 shadow-sm space-y-2">
 <h3 class="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
@@ -522,6 +598,7 @@
             네, 1억 원을 초과하는 신용대출 잔액이 있거나 추가 대출 시 만기 5년 원리금 분할상환으로 간주되어 DSR 한도를 크게 잠식합니다.
           </p>
 </div>
+<!-- PAGE:FAQ END -->
 </div>
 </div>
 <!-- Official Legal Disclaimer -->
@@ -568,8 +645,8 @@
           전문 저널리스트가 심층 분석한 공식 정책·기술 데이터 리포트를 함께 읽어보세요.
         </p>
       </div>
-      <a href="https://finance-kr.enjoy-onepage.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-5 py-2.5 rounded-xl transition text-xs whitespace-nowrap shadow">
-        <span>매거진 리포트 읽기</span> <span>→</span>
+      <a href="https://jeonse-deposit-calc.enjoy-onepage.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-5 py-2.5 rounded-xl transition text-xs whitespace-nowrap shadow">
+        <span>전세보증금 HUG 126% 안전진단 계산기 →</span>
       </a>
     </div>
   </section>
@@ -662,8 +739,10 @@
       document.getElementById('limit-fixed-text').textContent = `${formatNum(limitFixed)}원`;
       
       document.getElementById('newborn-limit-display').textContent = `${formatNum(newbornLimit)}원`;
+      const _nbSub = document.getElementById('newborn-subtext');
+      if (_nbSub) _nbSub.textContent = isNewborn ? '출산 가구 특례 적용 시 (DSR 규제 배제)' : '순수 고정금리 적용 시 (스트레스 금리 0%)';
       document.getElementById('diff-limit-text').textContent = `+${formatNum(diffLimit)}원 한도 증액`;
-      document.getElementById('interest-save-text').textContent = `총 ${formatNum(totalSave)}원 절감`;
+      document.getElementById('interest-save-text').textContent = isNewborn ? `약 ${formatNum(totalSave)}원 절감` : '출산 특례 체크 시 산출';
 
       try {
         localStorage.setItem('dsr_calc_last', JSON.stringify({ income, limitVar, newbornLimit }));
